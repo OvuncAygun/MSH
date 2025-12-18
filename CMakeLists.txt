@@ -4,28 +4,93 @@ project(MSH)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(EXTERNAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external)
+set_property(DIRECTORY APPEND PROPERTY
+    ADDITIONAL_CLEAN_FILES
+    ${CMAKE_BINARY_DIR}/_deps
+)
+
+include(FetchContent)
+
+add_executable(MSH 
+    src/main.cpp
+)
 
 target_include_directories(MSH
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
-        ${CMAKE_CURRENT_SOURCE_DIR}/external
-        ${CMAKE_CURRENT_SOURCE_DIR}/external/M1
-        ${CMAKE_CURRENT_SOURCE_DIR}/external/M2
-        ${CMAKE_CURRENT_SOURCE_DIR}/external/M3
-        ${CMAKE_CURRENT_SOURCE_DIR}/external/M4
-        ${CMAKE_CURRENT_SOURCE_DIR}/external/M5
-        ${CMAKE_CURRENT_SOURCE_DIR}/external/M6
-        ${CMAKE_CURRENT_SOURCE_DIR}/external/M7
-        ${CMAKE_CURRENT_SOURCE_DIR}/external/M8
     
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-add_executable(MSH 
-    src/main.cpp
+FetchContent_Declare(
+    MSH_M1
+    GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M1.git
+    GIT_TAG main
 )
+
+FetchContent_Declare(
+    MSH_M2
+    GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M2.git
+    GIT_TAG main
+)
+
+FetchContent_Declare(
+    MSH_M3
+    GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M3.git
+    GIT_TAG main
+)
+
+FetchContent_Declare(
+    MSH_M4
+    GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M4.git
+    GIT_TAG main
+)
+
+FetchContent_Declare(
+    MSH_M5
+    GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M5.git
+    GIT_TAG main
+)
+
+FetchContent_Declare(
+    MSH_M6
+    GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M6.git
+    GIT_TAG main
+)
+
+FetchContent_Declare(
+    MSH_M7
+    GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M7.git
+    GIT_TAG main
+)
+
+FetchContent_Declare(
+    MSH_M8
+    GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M8.git
+    GIT_TAG main
+)
+
+FetchContent_MakeAvailable(
+    MSH_M1
+    MSH_M2
+    MSH_M3
+    MSH_M4
+    MSH_M5
+    MSH_M6
+    MSH_M7
+    MSH_M8
+)
+
+target_link_libraries(MSH MSH_M1)
+target_link_libraries(MSH MSH_M2)
+target_link_libraries(MSH MSH_M3)
+target_link_libraries(MSH MSH_M4)
+target_link_libraries(MSH MSH_M5)
+target_link_libraries(MSH MSH_M6)
+target_link_libraries(MSH MSH_M7)
+target_link_libraries(MSH MSH_M8)
+
 
 include(CTest)
 enable_testing()

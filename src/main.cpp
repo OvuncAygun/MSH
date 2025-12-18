@@ -24,11 +24,14 @@ int main () {
 
     mshM2.setDeviceFactories(mshM1.getDeviceFactories());
     mshM2.setProductFamilyFactories(mshM1.getProductFamilyFactories());
+    mshM2.initializeCreatorChain();
     mshM2.initializeDeviceManager();
 
     mshM3.setDeviceManager(mshM2.getDeviceManager());
+    mshM3.initializeModeStrategies();
     mshM3.initializeModeManager();
 
+    mshM4.initializeStates();
     mshM4.initializeStateManager();
 
     mshM6.setLogger(mshM5.getLogger());
@@ -51,4 +54,10 @@ int main () {
     mshM8.initializeStates(mshM4.getStates());
     mshM8.applyMSHMMenuManagerStates();
 
+    IMSHMenuManager* menuManager = mshM8.getMenuManager();
+
+    while (menuManager->getIsRunning()) {
+        menuManager->displayMenu();
+        menuManager->handleInput();
+    }
 }
