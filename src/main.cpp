@@ -24,8 +24,8 @@ int main () {
 
     mshM2.setDeviceFactories(mshM1.getDeviceFactories());
     mshM2.setProductFamilyFactories(mshM1.getProductFamilyFactories());
-    mshM2.initializeCreatorChain();
     mshM2.initializeDeviceManager();
+    mshM2.initializeCreatorChain();
 
     mshM3.setDeviceManager(mshM2.getDeviceManager());
     mshM3.initializeModeStrategies();

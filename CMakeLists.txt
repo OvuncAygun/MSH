@@ -40,7 +40,6 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M3.git
     GIT_TAG main
 )
-
 FetchContent_Declare(
     MSH_M4
     GIT_REPOSITORY https://github.com/OvuncAygun/MSH_M4.git
@@ -71,26 +70,19 @@ FetchContent_Declare(
     GIT_TAG main
 )
 
-FetchContent_MakeAvailable(
-    MSH_M1
-    MSH_M2
-    MSH_M3
-    MSH_M4
-    MSH_M5
-    MSH_M6
-    MSH_M7
-    MSH_M8
+FetchContent_MakeAvailable(MSH_M1 MSH_M2 MSH_M3 MSH_M4 MSH_M5 MSH_M6 MSH_M7 MSH_M8)
+
+target_link_libraries(MSH
+    PRIVATE
+        MSH_M1
+        MSH_M2
+        MSH_M3
+        MSH_M4
+        MSH_M5
+        MSH_M6
+        MSH_M7
+        MSH_M8
 )
-
-target_link_libraries(MSH MSH_M1)
-target_link_libraries(MSH MSH_M2)
-target_link_libraries(MSH MSH_M3)
-target_link_libraries(MSH MSH_M4)
-target_link_libraries(MSH MSH_M5)
-target_link_libraries(MSH MSH_M6)
-target_link_libraries(MSH MSH_M7)
-target_link_libraries(MSH MSH_M8)
-
 
 include(CTest)
 enable_testing()
