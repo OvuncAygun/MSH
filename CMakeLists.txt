@@ -4,10 +4,12 @@ project(MSH)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set_property(DIRECTORY APPEND PROPERTY
-    ADDITIONAL_CLEAN_FILES
-    ${CMAKE_BINARY_DIR}/_deps
-)
+set(DEPS_DIR "${CMAKE_BINARY_DIR}/_deps")
+
+if(EXISTS "${DEPS_DIR}")
+    message(STATUS "Clearing _deps folder: ${DEPS_DIR}")
+    file(REMOVE_RECURSE "${DEPS_DIR}")
+endif()
 
 include(FetchContent)
 
