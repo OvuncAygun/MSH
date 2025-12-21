@@ -34,6 +34,7 @@ int main () {
     mshM4.initializeStates();
     mshM4.initializeStateManager();
 
+    mshM6.setDeviceManager(mshM2.getDeviceManager());
     mshM6.setLogger(mshM5.getLogger());
     mshM6.initializeSecurityManager();
 
@@ -53,6 +54,7 @@ int main () {
     mshM8.applyMSHMMenuManagerModes();
     mshM8.initializeStates(mshM4.getStates());
     mshM8.applyMSHMMenuManagerStates();
+    mshM8.setSecurityManager(mshM6.getSecurityManager());
 
     IMSHMenuManager* menuManager = mshM8.getMenuManager();
 
