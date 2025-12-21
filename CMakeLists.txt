@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(MSH)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 set(DEPS_DIR "${CMAKE_BINARY_DIR}/_deps")
 
 if(EXISTS "${DEPS_DIR}")
